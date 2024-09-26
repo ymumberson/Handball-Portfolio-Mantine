@@ -42,7 +42,9 @@ jobs:
             ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json', '**/yarn.lock') }}-
 
       - name: Build with Next.js 🏗️
-        run: npx next build
+        run: |
+          npx next build
+          npx next export -o out # Export to the ./out directory
 
       - name: List directory contents for debugging 🗂️
         run: ls -la  # List contents to check for the out directory
