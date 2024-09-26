@@ -44,6 +44,9 @@ jobs:
       - name: Build with Next.js 🏗️
         run: npx next build
 
+      - name: List directory contents for debugging 🗂️
+        run: ls -la  # List contents to check for the out directory
+
       - name: Upload artifact 📡
         uses: actions/upload-pages-artifact@v3
         with:
