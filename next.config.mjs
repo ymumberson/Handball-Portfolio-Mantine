@@ -29,7 +29,7 @@
 const nextConfig = {
   output: 'export',
   basePath: '/Handball-Portfolio-Mantine',
-  assetPrefix: '/Handball-Portfolio-Mantine/',
+  // assetPrefix: '/Handball-Portfolio-Mantine/',
   reactStrictMode: false,
   eslint: {
     ignoreDuringBuilds: true,
