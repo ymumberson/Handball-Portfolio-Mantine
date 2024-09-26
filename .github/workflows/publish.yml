@@ -44,19 +44,6 @@ jobs:
       - name: Build with Next.js 🏗️
         run: npx next build
 
-      # - name: List directory contents for debugging 🗂️
-      #   run: ls -la  # List contents to check for the out directory
-
-      # - name: Upload artifact 📡
-      #   uses: actions/upload-pages-artifact@v3
-      #   with:
-      #     path: ./out
-
-  upload:
-    runs-on: ubuntu-latest
-    needs: build
-
-    steps:
       - name: List directory contents for debugging 🗂️
         run: ls -la  # List contents to check for the out directory
 
@@ -64,14 +51,14 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./out
-
+          
   deploy:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
 
     runs-on: ubuntu-latest
-    needs: upload
+    needs: build
 
     steps:
       - name: Publish to GitHub Pages 🚀
