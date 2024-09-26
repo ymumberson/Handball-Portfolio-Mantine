@@ -40,12 +40,6 @@ jobs:
           npx next build
           echo "Next.js build completed."
 
-      - name: Export Next.js static site 🌐
-        run: |
-          echo "Starting Next.js export..."
-          npx next export
-          echo "Next.js export completed."
-
       - name: List contents of the current directory 📁
         run: ls -la  # Check the contents to see if out directory exists
 
