@@ -1,3 +1,4 @@
+# File: .github/workflows/publish.yml
 name: publish-to-github-pages
 on:
   push:
@@ -23,11 +24,6 @@ jobs:
 
       - name: Setup Node.js ⚙️ - Cache dependencies ⚡ - Install dependencies 🔧
         uses: ./.github/workflows/setup-node
-        with:
-          node-version: '21'  # Match your local version
-
-      # - name: Install dependencies
-      #   run: yarn install
 
       - name: Setup Pages ⚙️
         uses: actions/configure-pages@v4
@@ -35,16 +31,7 @@ jobs:
           static_site_generator: next
 
       - name: Build with Next.js 🏗️
-        run: |
-          echo "Starting Next.js build..."
-          npx next build
-          echo "Next.js build completed."
-
-      - name: List contents of the current directory 📁
-        run: ls -la  # Check the contents to see if out directory exists
-
-      - name: List contents of the 'out' directory 📁
-        run: ls -la out  # Check if out directory exists
+        run: npx next build
 
       - name: Upload artifact 📡
         uses: actions/upload-pages-artifact@v3
