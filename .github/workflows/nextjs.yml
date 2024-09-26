@@ -56,7 +56,7 @@ jobs:
       - name: Setup Yarn
         run: corepack prepare yarn@3.5.1 --activate
       - name: Install Yarn dependencies
-        run: yarn install --frozen-lockfile
+        run: yarn install --immutable
       - name: Setup Pages
         uses: actions/configure-pages@v5
         with:
