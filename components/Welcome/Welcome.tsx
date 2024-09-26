@@ -11,7 +11,7 @@ export function Welcome() {
         </Text>
       </Title>
       <Text c="dimmed" ta="center" size="lg" maw={580} mx="auto" mt="xl">
-        I'll be following tutorials from{' '}
+        I&apos;ll be following tutorials from{' '}
         <Anchor href="https://mantine.dev/" size="lg">
         Mantine Docs
         </Anchor>
