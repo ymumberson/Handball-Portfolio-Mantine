@@ -1,3 +1,19 @@
+// import bundleAnalyzer from '@next/bundle-analyzer';
+
+// const withBundleAnalyzer = bundleAnalyzer({
+//   enabled: process.env.ANALYZE === 'true',
+// });
+
+// export default withBundleAnalyzer({
+//   reactStrictMode: false,
+//   eslint: {
+//     ignoreDuringBuilds: true,
+//   },
+//   experimental: {
+//     optimizePackageImports: ['@mantine/core', '@mantine/hooks'],
+//   },
+// });
+
 import bundleAnalyzer from '@next/bundle-analyzer';
 
 const withBundleAnalyzer = bundleAnalyzer({
@@ -12,4 +28,5 @@ export default withBundleAnalyzer({
   experimental: {
     optimizePackageImports: ['@mantine/core', '@mantine/hooks'],
   },
+  output: 'export',  // Injecting output property
 });
