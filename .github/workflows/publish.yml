@@ -60,12 +60,14 @@
 #         id: deployment
 #         uses: actions/deploy-pages@v4
 
-name: Deploy to GitHub Pages
+
+
+name: Deploy Next.js App
 
 on:
   push:
     branches:
-      - master # Adjust if your default branch is different
+      - master
   workflow_dispatch:
 
 permissions:
@@ -73,42 +75,42 @@ permissions:
   pages: write
   id-token: write
 
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v4
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20' # Ensure compatibility with your local version
-          cache: 'yarn'
+          node-version: '20'
 
-      - name: Install dependencies
-        run: yarn install --immutable
+      - name: Install Dependencies
+        run: npm ci
 
-      - name: Build the project
-        run: yarn build
+      - name: Build Project
+        run: npm run build
 
-      - name: Export static pages
-        run: yarn next export
+      - name: Export Static Files
+        run: npm run export
 
-      - name: Upload artifact to GitHub Pages
+      - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./out # Make sure this matches the output folder from `next export`
+          path: ./out
 
   deploy:
-    needs: build
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-
+    needs: build
+    permissions:
+      pages: write
+      id-token: write
     steps:
       - name: Deploy to GitHub Pages
-        id: deployment
         uses: actions/deploy-pages@v4
