@@ -35,6 +35,9 @@ jobs:
 
       - name: List contents of the current directory 📁
         run: ls -la
+      
+      - name: List contents of git ignore
+        run: cat .gitignore
 
       - name: Upload artifact 📡
         uses: actions/upload-pages-artifact@v3
