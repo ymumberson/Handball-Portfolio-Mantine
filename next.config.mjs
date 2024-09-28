@@ -9,6 +9,9 @@ const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
+  images: {
+    unoptimized: true,
+  },
   experimental: {
     optimizePackageImports: ['@mantine/core', '@mantine/hooks'],
   },
